@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" th:href="@{/menu}">Productos</a>
+    <div class="form-inline my-2 my-lg-0 ml-auto">
+        <img th:src="${'/usuario_foto/' + foto}" alt="Profile" class="profile-pic">
+        <p class="mb-0 ml-2" th:text="${nombreUsuario}"></p>
+        <a class="btn btn-outline-danger ml-2" th:href="@{/logout}" role="button">Cerrar Sesión</a>
+    </div>
+</nav>
+<div class="container mt-5">
+    <h2 class="mb-4">Detalle del Producto</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Información del Producto</h5>
+            <p class="card-text"><strong>Nombre:</strong> <span th:text="${producto.nombre}"></span></p>
+            <p class="card-text"><strong>Stock:</strong> <span th:text="${producto.stock}"></span></p>
+            <p class="card-text"><strong>Precio:</strong> <span th:text="${producto.precio}"></span></p>
+            <p class="card-text"><strong>Categoria:</strong> <span th:text="${producto.categoria.nombre}"></span></p>
+			<a href="/menu" class="btn btn-secondary">Atrás</a>
+            <a th:href="@{/eliminar/{id}(id=${producto.productoId})}" class="btn btn-primary">Eliminar Producto</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
